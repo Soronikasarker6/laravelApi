@@ -4,17 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreReviewRequest;
 use App\Http\Requests\UpdateReviewRequest;
+use App\Models\Product;
 use App\Models\Review;
+use App\Http\Resources\ReviewResource;
+
 
 class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Product $product)
     {
-        return Review::all();
-    }
+        return ReviewResource::collection($product->reviews);    }
 
     /**
      * Show the form for creating a new resource.

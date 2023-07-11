@@ -85,16 +85,35 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProductRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, $id)
     {
-        //
+        $showbase = Product::findOrFail($id);
+        $showbase->employee_nr = $request->input('name');
+        $showbase->employee_name = $request->input('detail');
+        $showbase->user_name = $request->input('price');
+        $showbase->company = $request->input('stock');
+
+        $result = $showbase->update();
+        if ($result) {
+            return response()->json($showbase);
+        } else {
+            return ["Not updated data"];
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($id)
     {
-        //
+        $showbase = Product::find($id);
+        $result = $showbase->delete();
+        if ($result) {
+            return [
+                "result" => "Delete Successful"
+            ];
+        } else {
+            return ["Not deleted data"];
+        }  
     }
 }
