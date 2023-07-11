@@ -49,7 +49,7 @@ class ProductController extends Controller
        
             // Create a new Data model instance and store the data
             $baseData = new Product();
-           
+
             $baseData->name = $name;
             $baseData->detail = $detail;
             $baseData->price = $price;

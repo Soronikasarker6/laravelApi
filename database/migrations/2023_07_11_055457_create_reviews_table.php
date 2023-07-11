@@ -16,9 +16,9 @@ return new class extends Migration
             $table->id();
             // $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->foreignIdFor(Product::class)->nullable()->constrained()->onDelete('set null');
-            $table->string('customer');
-            $table->text('review');
-            $table->integer('star');
+            $table->string('customer')->nullable();
+            $table->text('review')->nullable();
+            $table->integer('star')->nullable();
             $table->timestamps();
         });
     }
