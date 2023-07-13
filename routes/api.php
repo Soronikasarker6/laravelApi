@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\AddressController;
+
 
 
 /*
@@ -26,3 +28,5 @@ Route::apiResource('/products', ProductController::class);
 Route::group(['prefix'=>'products'], function(){
     Route::apiResource('/{product}/reviews', ReviewController::class);
 });
+
+Route::apiResource('/address', AddressController::class);
