@@ -15,10 +15,10 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             // $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
-            $table->foreignIdFor(Product::class)->nullable()->constrained()->onDelete('set null');
+            $table->foreignIdFor(Product::class)->constrained()->cascadeOnDelete();
             $table->string('customer')->nullable();
             $table->text('review')->nullable();
-            $table->integer('star')->nullable();
+            $table->integer('star');
             $table->timestamps();
         });
     }
