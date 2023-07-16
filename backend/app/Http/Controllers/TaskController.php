@@ -40,7 +40,7 @@ class TaskController extends Controller
 
         try {
             if (
-                !isset($request->task_name) || !isset($request->email)
+                !isset($request->task_name) || !isset($request->email) || !isset($request->time)
             ) {
                 return response()->json(['error' => 'Send all required parameters'], Response::HTTP_UNPROCESSABLE_ENTITY);
             }

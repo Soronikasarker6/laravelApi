@@ -31,14 +31,17 @@ class RunMigrations extends Command
     public function handle()
     {
         $task = new Task();
+        
+        $currentDate = Carbon::now();
+        $taskName = $currentDate->format('d-m-N-i');
         $insertRowList = [];
-
+       
         $insertRowList = [
-            'time'                      => Carbon::now()->format('Y-m-d'),
-            'task_name'                 => Carbon::now()->format('d-m-N-i'),
-            'email'                     => Carbon::now()->format('d-m-N-i').$task->task_name . '@gmail.com',
-            'created_at'                => Carbon::now(),
-            'updated_at'                => Carbon::now(),
+            'time'                      => $currentDate->format('Y-m-d'),
+            'task_name'                 => $taskName,
+            'email'                     => $taskName. '@gmail.com',
+            'created_at'                => $currentDate,
+            'updated_at'                => $currentDate,
         ];
         Task::upsert($insertRowList, ['time', 'task_name', 'email'],['time']);
         
