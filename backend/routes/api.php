@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\TaskController;
 
 
 
@@ -30,3 +31,6 @@ Route::group(['prefix'=>'products'], function(){
 });
 
 Route::apiResource('/address', AddressController::class);
+
+Route::apiResource('/task', TaskController::class);
+
