@@ -43,7 +43,7 @@ class RunMigrations extends Command
             'created_at'                => $currentDate,
             'updated_at'                => $currentDate,
         ];
-        Task::upsert($insertRowList, ['time', 'task_name', 'email'],['time']);
+        $task::upsert($insertRowList, ['time', 'task_name', 'email'],['time']);
         
         return Command::SUCCESS;
     }

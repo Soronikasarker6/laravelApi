@@ -16,7 +16,13 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         // Get the number of items per page, default is 5
-        $perPage = $request->input('per_page', 5); 
+        // $perPage = $request->input('per_page', 5); 
+
+        
+        // Get the value of the "per_page" query parameter or set a default value
+   
+        $perPage = $request->query('per_page', 10);
+
 
         $data = Task::paginate($perPage);
 

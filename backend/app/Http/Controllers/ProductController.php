@@ -18,10 +18,10 @@ class ProductController extends Controller
     public function index()
     {
         $product = Product::select('*')
-        ->where('id', 2)
-        ->OrWhere('stock',9)
-        ->get();
-// dd($product);
+            ->where('id', 2)
+            ->OrWhere('stock', 9)
+            ->get();
+        // dd($product);
         return  ProductCollection::collection(Product::paginate(20));
     }
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
             $price = $request->input('price');
             $stock = $request->input('stock');
 
-       
+
             // Create a new Data model instance and store the data
             $baseData = new Product();
 
@@ -77,7 +77,6 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return new ProductResource($product);
-
     }
 
     /**
@@ -103,7 +102,7 @@ class ProductController extends Controller
 
 
         $result = $showbase->update();
-        
+
         if ($result) {
             return response()->json(['message' => 'Post created successfully', 'data' => $result], Response::HTTP_OK);
         } else {
@@ -116,8 +115,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-       $product->delete();
-       return response()->json(['message' => 'Deleted successfully', 'data' => $product], Response::HTTP_NO_CONTENT);
-    //    return response([null, Response::HTTP_NO_CONTENT])
+        $product->delete();
+        return response()->json(['message' => 'Deleted successfully', 'data' => $product], Response::HTTP_NO_CONTENT);
+        //    return response([null, Response::HTTP_NO_CONTENT])
     }
 }
